@@ -595,7 +595,7 @@
 
 <!-- ============ TAB PAGES ============ -->
 
-<div id="tab-deduction" class="tab-page" hidden>
+<div id="tab-deduction" class="tab-page" style="display:none">
 <main class="main" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:var(--space-6);">
   <div style="color:var(--color-muted-fg); opacity:0.6">
     <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
@@ -624,7 +624,7 @@
 </main>
 </div>
 
-<div id="tab-advisor" class="tab-page" hidden>
+<div id="tab-advisor" class="tab-page" style="display:none">
 <main class="main" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:var(--space-6);">
   <div style="color:var(--color-muted-fg); opacity:0.6">
     <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -642,7 +642,7 @@
 </main>
 </div>
 
-<div id="tab-knowledge" class="tab-page" hidden>
+<div id="tab-knowledge" class="tab-page" style="display:none">
 <main class="main" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:var(--space-6);">
   <div style="color:var(--color-muted-fg); opacity:0.6">
     <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
@@ -702,11 +702,11 @@
 /* ============ TAB SWITCHING ============ */
 function switchTab(tabId) {
   document.querySelectorAll('.tab-page').forEach(p => {
-    p.hidden = true;
+    p.style.display = 'none';
   });
   const target = document.getElementById('tab-' + tabId);
   if (target) {
-    target.hidden = false;
+    target.style.display = (tabId === 'insight') ? 'contents' : 'block';
   }
   document.querySelectorAll('.nav-tab, .mobile-nav-tab').forEach(b => {
     b.classList.toggle('active', b.dataset.tab === tabId);
