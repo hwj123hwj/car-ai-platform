@@ -8,510 +8,452 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 <style>
-  /* ============ DESIGN TOKENS ============ */
   :root {
-    /* Colors — Ride Hailing / Transportation palette */
-    --color-primary: #1E293B;
-    --color-on-primary: #FFFFFF;
-    --color-secondary: #334155;
-    --color-on-secondary: #FFFFFF;
-    --color-accent: #2563EB;
-    --color-on-accent: #FFFFFF;
-    --color-bg: #0F172A;
-    --color-foreground: #FFFFFF;
-    --color-card: #192134;
-    --color-card-fg: #FFFFFF;
-    --color-muted: #10182B;
-    --color-muted-fg: #94A3B8;
-    --color-border: rgba(255,255,255,0.08);
-    --color-border-strong: rgba(255,255,255,0.14);
-    --color-destructive: #DC2626;
-    --color-success: #22C55E;
-    --color-warning: #F59E0B;
-
-    /* Typography */
-    --font-sans: "Fira Sans", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
-    --font-mono: "Fira Code", "SF Mono", "Cascadia Code", monospace;
-    --text-xs: 0.75rem;
-    --text-sm: 0.875rem;
-    --text-base: 1rem;
-    --text-lg: 1.125rem;
-    --text-xl: 1.25rem;
-    --text-2xl: 1.5rem;
-    --leading-relaxed: 1.625;
-
-    /* Spacing — 4px base */
-    --space-1: 4px;
-    --space-2: 8px;
-    --space-3: 12px;
-    --space-4: 16px;
-    --space-5: 20px;
-    --space-6: 24px;
-    --space-8: 32px;
-    --space-10: 40px;
-    --space-12: 48px;
-
-    /* Radius */
-    --radius-sm: 6px;
-    --radius: 10px;
-    --radius-lg: 14px;
-    --radius-xl: 20px;
-
-    /* Shadows */
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
-    --shadow: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
-    --shadow-lg: 0 4px 14px rgba(0,0,0,0.5);
-
-    /* Motion */
-    --duration-fast: 150ms;
-    --duration-normal: 200ms;
-    --duration-slow: 300ms;
-    --ease-out: cubic-bezier(0, 0, 0.2, 1);
-    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --c-bg: #0F172A;
+    --c-surface: #192134;
+    --c-surface2: #10182B;
+    --c-border: rgba(255,255,255,0.07);
+    --c-border-strong: rgba(255,255,255,0.13);
+    --c-text: #FFFFFF;
+    --c-dim: #94A3B8;
+    --c-accent: #2563EB;
+    --c-accent-hover: #1D4ED8;
+    --c-success: #22C55E;
+    --c-danger: #DC2626;
+    --c-warning: #F59E0B;
+    --font: "Fira Sans", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    --font-mono: "Fira Code", "SF Mono", monospace;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --ease: cubic-bezier(0,0,0.2,1);
   }
-
-  /* ============ RESET ============ */
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
   body {
-    font-family: var(--font-sans);
-    background: var(--color-bg);
-    color: var(--color-foreground);
-    line-height: var(--leading-relaxed);
-    min-height: 100vh;
+    font-family: var(--font);
+    background: var(--c-bg);
+    color: var(--c-text);
+    line-height: 1.6;
+    display: flex;
     min-height: 100dvh;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
-  :focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
-  }
-  ::selection { background: rgba(37,99,235,0.3); color: #fff; }
+  :focus-visible { outline:2px solid var(--c-accent); outline-offset:2px; }
+  ::selection { background:rgba(37,99,235,0.3); color:#fff; }
 
-  /* ============ HEADER ============ */
-  .header {
-    background: color-mix(in srgb, var(--color-card) 80%, transparent);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--color-border);
-    padding: 0 var(--space-6);
-    height: 56px;
+  /* ===== SIDEBAR ===== */
+  .sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    background: var(--c-surface);
+    border-right: 1px solid var(--c-border);
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px 12px;
+    gap: 24px;
     position: sticky;
     top: 0;
-    z-index: 100;
+    height: 100dvh;
+    overflow-y: auto;
   }
-  .header-left {
+  .sidebar-logo {
     display: flex;
     align-items: center;
-    gap: var(--space-6);
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--text-lg);
+    gap: 8px;
+    font-size: 15px;
     font-weight: 700;
-    color: var(--color-foreground);
-    letter-spacing: -0.01em;
+    padding: 0 8px;
   }
-  .logo-icon {
-    width: 28px; height: 28px;
-    display: flex; align-items: center; justify-content: center;
+  .sidebar-logo svg { width: 22px; height: 22px; color: var(--c-accent); }
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
-  .logo-icon svg { width: 24px; height: 24px; }
-  .nav-tabs { display: flex; gap: 2px; }
-  .nav-tab {
-    padding: var(--space-2) var(--space-4);
+  .sidebar-nav button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
     border-radius: var(--radius-sm);
     border: none;
     background: transparent;
-    color: var(--color-muted-fg);
+    color: var(--c-dim);
     cursor: pointer;
-    font-size: var(--text-sm);
-    font-weight: 500;
+    font-size: 14px;
     font-family: inherit;
-    transition: color var(--duration-fast) var(--ease-out),
-                background var(--duration-fast) var(--ease-out);
+    font-weight: 500;
+    text-align: left;
+    transition: all 150ms var(--ease);
   }
-  .nav-tab:hover { color: var(--color-foreground); background: rgba(255,255,255,0.06); }
-  .nav-tab.active {
-    color: var(--color-accent);
-    background: rgba(37,99,235,0.12);
+  .sidebar-nav button svg { width: 20px; height: 20px; flex-shrink: 0; }
+  .sidebar-nav button:hover { color: var(--c-text); background: rgba(255,255,255,0.04); }
+  .sidebar-nav button.active {
+    color: var(--c-accent);
+    background: rgba(37,99,235,0.1);
   }
-  .header-right { display: flex; align-items: center; gap: var(--space-3); }
-  .user-avatar {
+  .sidebar-user {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    border-radius: var(--radius-sm);
+  }
+  .sidebar-avatar {
     width: 32px; height: 32px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--color-accent), #7C3AED);
+    background: linear-gradient(135deg, var(--c-accent), #7C3AED);
     display: flex; align-items: center; justify-content: center;
-    font-size: var(--text-sm); font-weight: 600;
-    color: #fff;
+    font-size: 13px; font-weight: 600;
   }
+  .sidebar-user-name { font-size: 13px; font-weight: 600; }
+  .sidebar-user-role { font-size: 11px; color: var(--c-dim); }
 
-  /* ============ MAIN ============ */
-  .main {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: var(--space-6);
-    display: grid;
-    grid-template-rows: auto auto 1fr;
-    gap: var(--space-5);
-    height: calc(100vh - 56px);
-    height: calc(100dvh - 56px);
-  }
-
-  /* ============ SEARCH ============ */
-  .search-bar {
+  /* ===== MAIN ===== */
+  .main-wrap {
+    flex: 1;
+    min-width: 0;
     display: flex;
-    gap: var(--space-3);
+    flex-direction: column;
+  }
+  .topbar {
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 12px 28px;
+    background: var(--c-bg);
+    border-bottom: 1px solid var(--c-border);
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
   }
-  .search-wrapper { flex: 1; position: relative; }
-  .search-input {
+  .topbar-search {
+    position: relative;
+    flex: 1;
+    max-width: 480px;
+  }
+  .topbar-search input {
     width: 100%;
-    padding: var(--space-3) var(--space-4) var(--space-3) 44px;
-    background: var(--color-card);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    color: var(--color-foreground);
-    font-size: var(--text-sm);
+    padding: 9px 14px 9px 38px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-sm);
+    color: var(--c-text);
+    font-size: 14px;
     font-family: inherit;
-    transition: border-color var(--duration-fast) var(--ease-out),
-                box-shadow var(--duration-fast) var(--ease-out);
+    transition: border-color 150ms var(--ease);
   }
-  .search-input:focus {
-    outline: none;
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
-  }
-  .search-input::placeholder { color: var(--color-muted-fg); }
-  .search-icon-svg {
+  .topbar-search input:focus { outline:none; border-color:var(--c-accent); }
+  .topbar-search input::placeholder { color:var(--c-dim); }
+  .topbar-search svg {
     position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--color-muted-fg);
+    left: 12px; top: 50%; transform: translateY(-50%);
+    width: 18px; height: 18px;
+    color: var(--c-dim);
     pointer-events: none;
   }
-  .date-badge {
-    padding: var(--space-2) var(--space-4);
-    background: var(--color-card);
-    border: 1px solid var(--color-border);
+  .topbar-date {
+    padding: 7px 14px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
     border-radius: var(--radius-sm);
-    color: var(--color-muted-fg);
-    font-size: var(--text-sm);
+    font-size: 13px;
+    color: var(--c-dim);
     white-space: nowrap;
     display: flex;
     align-items: center;
-    gap: var(--space-1);
+    gap: 6px;
   }
-  .date-badge strong { color: var(--color-accent); font-weight: 600; }
+  .topbar-date strong { color: var(--c-accent); font-weight: 600; }
 
-  /* ============ SECTION TITLE ============ */
-  .section-title {
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-muted-fg);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+  /* Content area */
+  .content {
+    flex: 1;
+    padding: 28px;
+    overflow-y: auto;
+  }
+
+  /* ===== PAGE HEADER ===== */
+  .page-header {
+    margin-bottom: 24px;
     display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .page-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .page-subtitle { font-size: 14px; color: var(--c-dim); margin-top: 2px; }
+  .page-actions {
+    display: flex;
+    gap: 8px;
+  }
+  .btn {
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 150ms var(--ease);
+    border: none;
+    display: inline-flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 6px;
   }
-  .section-title::before {
-    content: '';
-    width: 3px;
-    height: 16px;
-    background: var(--color-accent);
-    border-radius: 2px;
+  .btn-primary { background: var(--c-accent); color: #fff; }
+  .btn-primary:hover { background: var(--c-accent-hover); }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--c-border-strong);
+    color: var(--c-dim);
   }
+  .btn-ghost:hover { border-color: var(--c-accent); color: var(--c-text); }
 
-  /* ============ COMPARISON GRID ============ */
+  /* ===== COMPARISON CARDS ===== */
   .comparison-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-4);
-    flex: 1;
-    overflow: auto;
+    gap: 16px;
+    margin-bottom: 28px;
   }
   .car-card {
-    background: var(--color-card);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-5);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    transition: border-color var(--duration-normal) var(--ease-out),
-                box-shadow var(--duration-normal) var(--ease-out);
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 200ms var(--ease), box-shadow 200ms var(--ease);
   }
   .car-card:hover {
-    border-color: var(--color-accent);
+    border-color: var(--c-accent);
     box-shadow: 0 0 0 1px rgba(37,99,235,0.2);
   }
-  .car-card-header {
+  .car-card-top {
+    padding: 20px 20px 0;
+  }
+  .car-badge-row {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    margin-bottom: 12px;
   }
-  .car-name { font-size: var(--text-xl); font-weight: 700; }
+  .car-name { font-size: 18px; font-weight: 700; }
   .car-badge {
-    padding: 2px 10px;
-    border-radius: 12px;
-    font-size: var(--text-xs);
+    font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.02em;
+    padding: 3px 10px;
+    border-radius: 10px;
   }
-  .badge-new { background: rgba(34,197,94,0.12); color: var(--color-success); }
-  .badge-hot { background: rgba(220,38,38,0.12); color: var(--color-destructive); }
-
-  .car-image {
+  .badge-new { background: rgba(34,197,94,0.12); color: var(--c-success); }
+  .badge-hot { background: rgba(220,38,38,0.12); color: var(--c-danger); }
+  .car-visual {
     width: 100%;
-    aspect-ratio: 16/10;
-    background: var(--color-muted);
-    border-radius: var(--radius);
+    aspect-ratio: 3/2;
+    background: var(--c-surface2);
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    margin-bottom: 16px;
   }
-  .car-image svg { width: 64px; height: 64px; opacity: 0.5; }
-
-  /* Specs */
-  .specs-list { display: flex; flex-direction: column; gap: 2px; }
-  .spec-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-1) 0;
-    font-size: var(--text-sm);
+  .car-visual svg { width: 56px; height: 56px; opacity: 0.35; }
+  .car-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin-bottom: 16px;
   }
-  .spec-row + .spec-row {
-    border-top: 1px solid var(--color-border);
-  }
-  .spec-label { color: var(--color-muted-fg); }
-  .spec-value { font-weight: 600; text-align: right; }
-  .spec-value.price { color: var(--color-success); font-family: var(--font-mono); }
-
-  /* AI Analysis */
-  .ai-verdict {
-    background: var(--color-muted);
-    border-radius: var(--radius);
-    padding: var(--space-4);
-    font-size: var(--text-sm);
-    border-left: 3px solid var(--color-accent);
-    line-height: 1.6;
-  }
-  .ai-verdict-label {
-    font-size: var(--text-xs);
-    font-weight: 700;
-    color: var(--color-accent);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--space-2);
-  }
-  .threat-level {
-    margin-top: var(--space-2);
-    font-weight: 700;
-    font-size: var(--text-sm);
-  }
-  .threat-high { color: var(--color-destructive); }
-  .threat-mid  { color: var(--color-warning); }
-  .threat-low  { color: var(--color-success); }
-
-  /* ============ CHAT ============ */
-  .chat-panel {
-    background: var(--color-card);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+  .car-spec {
+    padding: 8px 0;
+    font-size: 13px;
     display: flex;
     flex-direction: column;
-    min-height: 180px;
-    max-height: 240px;
+    gap: 1px;
   }
-  .chat-header {
-    padding: var(--space-3) var(--space-4);
-    border-bottom: 1px solid var(--color-border);
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-muted-fg);
+  .car-spec + .car-spec { border-top: 1px solid var(--c-border); }
+  .car-spec .spec-label { font-size: 11px; color: var(--c-dim); }
+  .car-spec .spec-value { font-weight: 600; }
+  .car-spec .spec-value.price { color: var(--c-success); font-family: var(--font-mono); font-size: 12px; }
+  .car-verdict {
+    background: var(--c-surface2);
+    padding: 16px 20px;
+    font-size: 13px;
+    line-height: 1.7;
+    border-top: 1px solid var(--c-border);
+  }
+  .car-verdict-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--c-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  .car-verdict b { color: var(--c-accent); }
+  .threat-bar {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .threat-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .threat-high .threat-dot { background: var(--c-danger); box-shadow: 0 0 8px rgba(220,38,38,0.5); }
+  .threat-mid  .threat-dot { background: var(--c-warning); box-shadow: 0 0 8px rgba(245,158,11,0.5); }
+  .threat-low  .threat-dot { background: var(--c-success); box-shadow: 0 0 8px rgba(34,197,94,0.5); }
+  .threat-high { color: var(--c-danger); }
+  .threat-mid  { color: var(--c-warning); }
+  .threat-low  { color: var(--c-success); }
+
+  /* ===== CHAT ===== */
+  .chat-section {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+  }
+  .chat-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--c-border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--c-dim);
   }
   .chat-dot {
     width: 8px; height: 8px;
     border-radius: 50%;
-    background: var(--color-success);
+    background: var(--c-success);
     box-shadow: 0 0 6px rgba(34,197,94,0.5);
   }
-  .chat-messages {
-    flex: 1;
-    padding: var(--space-3) var(--space-4);
-    overflow-y: auto;
-    font-size: var(--text-sm);
+  .chat-body {
+    padding: 14px 20px;
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
+    gap: 8px;
+    max-height: 220px;
+    overflow-y: auto;
+    font-size: 13px;
   }
   .chat-msg {
-    padding: var(--space-2) var(--space-4);
-    border-radius: var(--radius);
-    max-width: 85%;
-    line-height: 1.6;
-    transition: opacity var(--duration-normal) var(--ease-out);
-  }
-  .chat-msg.ai {
-    background: var(--color-muted);
-    align-self: flex-start;
-    border-bottom-left-radius: 2px;
-  }
-  .chat-msg.user {
-    background: rgba(37,99,235,0.14);
-    align-self: flex-end;
-    border-bottom-right-radius: 2px;
-  }
-  .chat-input-row {
-    display: flex;
-    gap: var(--space-2);
-    padding: var(--space-2) var(--space-4);
-    border-top: 1px solid var(--color-border);
-  }
-  .chat-input {
-    flex: 1;
-    padding: var(--space-2) var(--space-3);
-    background: var(--color-muted);
-    border: 1px solid var(--color-border);
+    padding: 10px 14px;
     border-radius: var(--radius-sm);
-    color: var(--color-foreground);
-    font-size: var(--text-sm);
-    font-family: inherit;
-    transition: border-color var(--duration-fast) var(--ease-out);
-    min-height: 36px;
+    max-width: 80%;
+    line-height: 1.6;
   }
-  .chat-input:focus { outline: none; border-color: var(--color-accent); }
-  .chat-input::placeholder { color: var(--color-muted-fg); }
-  .chat-send {
-    padding: var(--space-2) var(--space-5);
-    background: var(--color-accent);
+  .chat-msg.ai { background: var(--c-surface2); align-self: flex-start; }
+  .chat-msg.user { background: rgba(37,99,235,0.12); align-self: flex-end; }
+  .chat-footer {
+    padding: 10px 20px;
+    border-top: 1px solid var(--c-border);
+    display: flex;
+    gap: 8px;
+  }
+  .chat-footer input {
+    flex: 1;
+    padding: 9px 14px;
+    background: var(--c-surface2);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-sm);
+    color: var(--c-text);
+    font-size: 13px;
+    font-family: inherit;
+  }
+  .chat-footer input:focus { outline: none; border-color: var(--c-accent); }
+  .chat-footer input::placeholder { color: var(--c-dim); }
+  .chat-footer button {
+    padding: 9px 20px;
+    background: var(--c-accent);
     border: none;
     border-radius: var(--radius-sm);
-    color: var(--color-on-accent);
+    color: #fff;
     font-weight: 600;
-    cursor: pointer;
-    font-size: var(--text-sm);
+    font-size: 13px;
     font-family: inherit;
-    transition: background var(--duration-fast) var(--ease-out),
-                transform var(--duration-fast) var(--ease-out);
+    cursor: pointer;
+    transition: background 150ms var(--ease);
     white-space: nowrap;
   }
-  .chat-send:hover { background: #1D4ED8; }
-  .chat-send:active { transform: scale(0.97); }
+  .chat-footer button:hover { background: var(--c-accent-hover); }
 
-  /* ============ MOBILE NAV ============ */
+  /* ===== TAB PAGE PLACEHOLDERS ===== */
+  .tab-page { display: none; }
+  .tab-page.active { display: block; }
+  .placeholder-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 60dvh;
+    gap: 20px;
+    color: var(--c-dim);
+  }
+  .placeholder-page svg { width: 56px; height: 56px; opacity: 0.3; }
+  .placeholder-page h3 { font-size: 20px; color: var(--c-text); font-weight: 600; }
+  .placeholder-page p { max-width: 440px; font-size: 14px; line-height: 1.7; }
+
+  /* ===== MOBILE NAV ===== */
   .mobile-nav { display: none; }
-  @media (max-width: 768px) {
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .sidebar { display: none; }
+    .topbar { padding: 10px 16px; }
+    .content { padding: 20px 16px; }
+    .comparison-grid { grid-template-columns: 1fr; gap: 12px; }
+    .page-header { flex-direction: column; gap: 12px; }
+    .page-title { font-size: 20px; }
+
     .mobile-nav {
       display: flex;
       position: sticky;
       bottom: 0;
-      background: var(--color-card);
-      border-top: 1px solid var(--color-border);
-      padding: var(--space-1) var(--space-2);
-      padding-bottom: max(var(--space-1), env(safe-area-inset-bottom));
+      background: var(--c-surface);
+      border-top: 1px solid var(--c-border);
+      padding: 4px 6px;
+      padding-bottom: max(4px, env(safe-area-inset-bottom));
       gap: 2px;
     }
-    .mobile-nav-tab {
+    .mobile-nav button {
       flex: 1;
-      padding: var(--space-1) 2px;
-      border-radius: var(--radius-sm);
+      padding: 6px 2px;
+      border-radius: 6px;
       border: none;
       background: transparent;
-      color: var(--color-muted-fg);
+      color: var(--c-dim);
       cursor: pointer;
       font-size: 10px;
       font-weight: 500;
       font-family: inherit;
-      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 2px;
-      transition: color var(--duration-fast) var(--ease-out);
       min-height: 44px;
       justify-content: center;
+      transition: color 150ms var(--ease);
     }
-    .mobile-nav-tab svg { width: 20px; height: 20px; }
-    .mobile-nav-tab.active { color: var(--color-accent); }
+    .mobile-nav button svg { width: 20px; height: 20px; }
+    .mobile-nav button.active { color: var(--c-accent); }
   }
 
-  /* ============ RESPONSIVE ============ */
-  @media (max-width: 768px) {
-    .header { padding: 0 var(--space-4); height: 48px; }
-    .logo { font-size: var(--text-base); }
-    .nav-tabs { display: none; }
-    .user-avatar { width: 28px; height: 28px; font-size: var(--text-xs); }
-
-    .main {
-      height: auto;
-      padding: var(--space-3);
-      gap: var(--space-3);
-    }
-
-    .search-bar { flex-direction: column; gap: var(--space-2); }
-    .search-input {
-      padding: var(--space-2) var(--space-3) var(--space-2) 38px;
-      font-size: var(--text-base);
-    }
-    .date-badge {
-      width: 100%;
-      justify-content: center;
-      padding: var(--space-2) var(--space-3);
-      font-size: var(--text-sm);
-    }
-
-    .section-title { font-size: var(--text-xs); }
-
-    /* Horizontal swipe */
-    .comparison-grid {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: var(--space-3);
-      padding-bottom: var(--space-2);
-      -webkit-overflow-scrolling: touch;
-    }
-    .comparison-grid::-webkit-scrollbar { display: none; }
-    .car-card {
-      min-width: 85vw;
-      max-width: 85vw;
-      scroll-snap-align: start;
-      padding: var(--space-4);
-      gap: var(--space-3);
-      flex-shrink: 0;
-    }
-    .car-name { font-size: var(--text-lg); }
-    .car-image { aspect-ratio: 16/9; }
-    .car-image svg { width: 48px; height: 48px; }
-    .spec-row { font-size: var(--text-xs); }
-    .ai-verdict { font-size: var(--text-xs); padding: var(--space-3); }
-
-    .chat-panel { min-height: 150px; max-height: none; flex: 1; }
-    .chat-messages { font-size: var(--text-sm); padding: var(--space-2) var(--space-3); }
-    .chat-msg { padding: var(--space-2) var(--space-3); max-width: 90%; }
-    .chat-input { font-size: var(--text-base); }
+  @media (max-width: 640px) {
+    .topbar { flex-direction: column; gap: 8px; }
+    .topbar-search { max-width: none; }
+    .topbar-date { width: 100%; justify-content: center; }
+    .car-specs { grid-template-columns: 1fr 1fr; }
   }
 
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .comparison-grid { grid-template-columns: 1fr; max-width: 640px; margin: 0 auto; }
-    .main { height: auto; }
-  }
-
-  /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
@@ -522,306 +464,259 @@
 </head>
 <body>
 
-<!-- Header -->
-<header class="header">
-  <div class="header-left">
-    <div class="logo">
-      <span class="logo-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="6" width="20" height="12" rx="2"/>
-          <path d="M7 18v-2"/>
-          <path d="M17 18v-2"/>
-          <circle cx="8" cy="12" r="1.5" fill="currentColor" stroke="none"/>
-          <circle cx="16" cy="12" r="1.5" fill="currentColor" stroke="none"/>
-        </svg>
-      </span>
-      赛豆 · 汽车智能平台
-    </div>
-    <nav class="nav-tabs">
-      <button class="nav-tab active" data-tab="insight">产品透视</button>
-      <button class="nav-tab" data-tab="deduction">产品推演</button>
-      <button class="nav-tab" data-tab="advisor">参谋对话</button>
-      <button class="nav-tab" data-tab="knowledge">知识库</button>
-    </nav>
+<!-- ===== SIDEBAR ===== -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="6" width="20" height="12" rx="2"/><path d="M7 18v-2"/><path d="M17 18v-2"/>
+      <circle cx="8" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+      <circle cx="16" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+    </svg>
+    赛豆平台
   </div>
-  <div class="header-right">
-    <span class="user-avatar" aria-label="当前用户 王总">王</span>
-  </div>
-</header>
-
-<!-- Main -->
-<div id="tab-insight" class="tab-page" style="display:contents">
-<main class="main">
-
-  <!-- Search -->
-  <div class="search-bar">
-    <div class="search-wrapper">
-      <span class="search-icon-svg" aria-hidden="true">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-        </svg>
-      </span>
-      <input class="search-input" type="text" placeholder="搜索历史竞品报告、品牌、车型…" aria-label="搜索" />
-    </div>
-    <div class="date-badge">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-      今日日报：<strong>2026年6月18日</strong>
+  <nav class="sidebar-nav" id="sidebarNav">
+    <button class="active" data-tab="insight">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      产品透视
+    </button>
+    <button data-tab="deduction">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+      产品推演
+    </button>
+    <button data-tab="advisor">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      参谋对话
+    </button>
+    <button data-tab="knowledge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      知识库
+    </button>
+  </nav>
+  <div class="sidebar-user">
+    <div class="sidebar-avatar">王</div>
+    <div>
+      <div class="sidebar-user-name">王总</div>
+      <div class="sidebar-user-role">管理员</div>
     </div>
   </div>
+</aside>
 
-  <div class="section-title">今日竞品透视 · 新品发布</div>
+<!-- ===== MAIN ===== -->
+<div class="main-wrap">
 
-  <div class="comparison-grid" id="comparisonGrid"></div>
-
-  <!-- Chat -->
-  <div class="chat-panel">
-    <div class="chat-header">
-      <span class="chat-dot" aria-hidden="true"></span>
-      AI 助手 · 基于今日日报追问
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="topbar-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="搜索历史报告、品牌、车型…" aria-label="搜索">
     </div>
-    <div class="chat-messages" id="chatMessages">
-      <div class="chat-msg ai">
-        早上好！今天重点关注三款新发布车型。你可以问我任何问题，比如「哪款性价比最高」「和我们的产品线有什么冲突」「建议怎么应对」。
+    <div class="topbar-date">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      日报：<strong>2026-06-18</strong>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- ===== TAB: 产品透视 ===== -->
+    <div id="tab-insight" class="tab-page active">
+      <div class="page-header">
+        <div>
+          <div class="page-title">今日竞品透视</div>
+          <div class="page-subtitle">实时追踪行业新品发布，AI 即时分析竞品动态及对赛豆的影响</div>
+        </div>
+        <div class="page-actions">
+          <button class="btn btn-ghost">导出报告</button>
+          <button class="btn btn-ghost">历史日报</button>
+          <button class="btn btn-primary">刷新数据</button>
+        </div>
+      </div>
+
+      <div class="comparison-grid" id="comparisonGrid"></div>
+
+      <div class="chat-section">
+        <div class="chat-header">
+          <span class="chat-dot"></span> AI 对话 · 基于今日数据追问
+        </div>
+        <div class="chat-body" id="chatMessages">
+          <div class="chat-msg ai">早上好！今天有三款值得关注的新车型。你可以问我「哪款性价比最高」「对我们的产品线有什么影响」「建议怎么应对」，我会基于赛豆的分析方法论作答。</div>
+        </div>
+        <div class="chat-footer">
+          <input id="chatInput" type="text" placeholder="输入问题…" aria-label="消息">
+          <button onclick="sendMessage()">发送</button>
+        </div>
       </div>
     </div>
-    <div class="chat-input-row">
-      <input class="chat-input" id="chatInput" type="text" placeholder="输入你的问题…" aria-label="输入消息" />
-      <button class="chat-send" onclick="sendMessage()">发送</button>
-    </div>
-  </div>
 
-</main>
-</div>
+    <!-- ===== TAB: 产品推演 ===== -->
+    <div id="tab-deduction" class="tab-page">
+      <div class="page-header">
+        <div>
+          <div class="page-title">产品推演</div>
+          <div class="page-subtitle">输入参数，AI 基于赛豆方法论推演市场表现与竞争态势</div>
+        </div>
+      </div>
+      <div class="placeholder-page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+        <h3>产品推演</h3>
+        <p>输入产品定位、定价、配置参数，AI 基于赛豆43项核心能力体系实时推演市场表现和竞争建议。</p>
+        <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;justify-content:center">
+          <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-sm);padding:14px 18px;text-align:left"><div style="font-size:11px;color:var(--c-dim)">定位</div><div style="font-weight:600;font-size:15px">中大型 SUV</div></div>
+          <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-sm);padding:14px 18px;text-align:left"><div style="font-size:11px;color:var(--c-dim)">定价</div><div style="font-weight:600;font-size:15px;font-family:var(--font-mono);color:var(--c-success)">28.98 万起</div></div>
+          <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-sm);padding:14px 18px;text-align:left"><div style="font-size:11px;color:var(--c-dim)">动力</div><div style="font-weight:600;font-size:15px">双电机 480 匹</div></div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:4px">开始推演</button>
+      </div>
+    </div>
 
-<!-- ============ TAB PAGES ============ -->
+    <!-- ===== TAB: 参谋对话 ===== -->
+    <div id="tab-advisor" class="tab-page">
+      <div class="page-header">
+        <div>
+          <div class="page-title">参谋对话</div>
+          <div class="page-subtitle">AI 资深产品顾问，贴合赛豆方法论，持续对话，输出有记忆</div>
+        </div>
+      </div>
+      <div class="placeholder-page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <h3>参谋对话</h3>
+        <p>自由对话模式。AI 以赛豆资深产品顾问身份，结合43项核心能力体系、历史决策和你的偏好，对任何产品想法给出贴合实际的深入分析。</p>
+        <div style="display:flex;gap:8px;width:100%;max-width:520px;margin-top:4px">
+          <input style="flex:1;padding:10px 14px;background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-sm);color:var(--c-text);font-size:14px;font-family:inherit" type="text" placeholder="说说你的产品想法…">
+          <button class="btn btn-primary">开始对话</button>
+        </div>
+      </div>
+    </div>
 
-<div id="tab-deduction" class="tab-page" style="display:none">
-<main class="main" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:var(--space-6);">
-  <div style="color:var(--color-muted-fg); opacity:0.6">
-    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
-  </div>
-  <div>
-    <h3 style="font-size:var(--text-xl);font-weight:600;margin-bottom:var(--space-2)">产品推演</h3>
-    <p style="color:var(--color-muted-fg);font-size:var(--text-sm);line-height:1.7;max-width:480px">
-      输入产品定义参数（定位、定价、配置），AI 基于赛豆方法论和历史数据，实时推演市场表现、竞争态势和发展建议。
-    </p>
-  </div>
-  <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;justify-content:center">
-    <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:var(--space-4) var(--space-6);text-align:left">
-      <div style="color:var(--color-muted-fg);font-size:var(--text-xs);margin-bottom:var(--space-1)">💎 定位</div>
-      <div style="font-weight:600;font-size:var(--text-base)">中大型 SUV</div>
+    <!-- ===== TAB: 知识库 ===== -->
+    <div id="tab-knowledge" class="tab-page">
+      <div class="page-header">
+        <div>
+          <div class="page-title">知识库</div>
+          <div class="page-subtitle">管理赛豆的分析方法论、核心能力和历史数据——AI 分析质量的根基</div>
+        </div>
+        <div class="page-actions">
+          <button class="btn btn-primary">上传文档</button>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px">
+        <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius);padding:20px">
+          <div style="font-size:15px;font-weight:600;margin-bottom:6px">评估框架</div>
+          <div style="color:var(--c-dim);font-size:13px">竞品维度 · 打分逻辑 · 权重配置</div>
+          <div style="margin-top:12px;font-size:12px;color:var(--c-accent)">12 个维度</div>
+        </div>
+        <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius);padding:20px">
+          <div style="font-size:15px;font-weight:600;margin-bottom:6px">43项核心能力</div>
+          <div style="color:var(--c-dim);font-size:13px">结构化标签 · 场景匹配</div>
+          <div style="margin-top:12px;font-size:12px;color:var(--c-warning)">待文档化</div>
+        </div>
+        <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius);padding:20px">
+          <div style="font-size:15px;font-weight:600;margin-bottom:6px">历史分析报告</div>
+          <div style="color:var(--c-dim);font-size:13px">RAG 知识库素材 · 逆向提炼方法论</div>
+          <div style="margin-top:12px;font-size:12px;color:var(--c-success)">5 份可用</div>
+        </div>
+        <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius);padding:20px">
+          <div style="font-size:15px;font-weight:600;margin-bottom:6px">产品定义体系</div>
+          <div style="color:var(--c-dim);font-size:13px">定位 · 对标框架 · 参数模板</div>
+          <div style="margin-top:12px;font-size:12px;color:var(--c-warning)">待文档化</div>
+        </div>
+      </div>
     </div>
-    <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:var(--space-4) var(--space-6);text-align:left">
-      <div style="color:var(--color-muted-fg);font-size:var(--text-xs);margin-bottom:var(--space-1)">💰 定价</div>
-      <div style="font-weight:600;font-size:var(--text-base);font-family:var(--font-mono);color:var(--color-success)">28.98 万起</div>
-    </div>
-    <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:var(--space-4) var(--space-6);text-align:left">
-      <div style="color:var(--color-muted-fg);font-size:var(--text-xs);margin-bottom:var(--space-1)">⚡ 动力</div>
-      <div style="font-weight:600;font-size:var(--text-base)">双电机 480 匹</div>
-    </div>
-  </div>
-  <button style="padding:var(--space-2) var(--space-6);background:var(--color-accent);border:none;border-radius:var(--radius-sm);color:#fff;font-weight:600;font-size:var(--text-sm);cursor:pointer;font-family:inherit;transition:background var(--duration-fast) var(--ease-out)">开始推演</button>
-</main>
-</div>
 
-<div id="tab-advisor" class="tab-page" style="display:none">
-<main class="main" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:var(--space-6);">
-  <div style="color:var(--color-muted-fg); opacity:0.6">
-    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-  </div>
-  <div>
-    <h3 style="font-size:var(--text-xl);font-weight:600;margin-bottom:var(--space-2)">参谋对话</h3>
-    <p style="color:var(--color-muted-fg);font-size:var(--text-sm);line-height:1.7;max-width:480px">
-      自由对话模式。AI 以赛豆资深产品顾问身份，结合公司方法论和历史决策记录，对任何产品想法给出贴合实际的即时分析。
-    </p>
-  </div>
-  <div style="display:flex;gap:var(--space-2);width:100%;max-width:520px">
-    <input style="flex:1;padding:var(--space-2) var(--space-3);background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius-sm);color:var(--color-foreground);font-size:var(--text-sm);font-family:inherit" type="text" placeholder="输入你的产品想法…">
-    <button style="padding:var(--space-2) var(--space-5);background:var(--color-accent);border:none;border-radius:var(--radius-sm);color:#fff;font-weight:600;font-size:var(--text-sm);cursor:pointer;font-family:inherit;white-space:nowrap">开始对话</button>
-  </div>
-</main>
-</div>
+  </div><!-- /content -->
+</div><!-- /main-wrap -->
 
-<div id="tab-knowledge" class="tab-page" style="display:none">
-<main class="main" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:var(--space-6);">
-  <div style="color:var(--color-muted-fg); opacity:0.6">
-    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-  </div>
-  <div>
-    <h3 style="font-size:var(--text-xl);font-weight:600;margin-bottom:var(--space-2)">知识库</h3>
-    <p style="color:var(--color-muted-fg);font-size:var(--text-sm);line-height:1.7;max-width:480px">
-      管理和维护赛豆的竞品分析方法论、43项核心能力、历史分析报告及产品定义框架。这里是整个平台的灵魂——AI 分析质量的根基。
-    </p>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3);max-width:400px;width:100%">
-    <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:var(--space-3);text-align:left">
-      <div style="font-size:var(--text-sm);font-weight:600;margin-bottom:2px">评估框架</div>
-      <div style="color:var(--color-muted-fg);font-size:var(--text-xs)">维度 · 权重 · 打分逻辑</div>
-    </div>
-    <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:var(--space-3);text-align:left">
-      <div style="font-size:var(--text-sm);font-weight:600;margin-bottom:2px">43项能力</div>
-      <div style="color:var(--color-muted-fg);font-size:var(--text-xs)">核心能力 · 标签结构</div>
-    </div>
-    <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:var(--space-3);text-align:left">
-      <div style="font-size:var(--text-sm);font-weight:600;margin-bottom:2px">历史报告</div>
-      <div style="color:var(--color-muted-fg);font-size:var(--text-xs)">5份 · RAG 知识库素材</div>
-    </div>
-    <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:var(--space-3);text-align:left">
-      <div style="font-size:var(--text-sm);font-weight:600;margin-bottom:2px">产品定义</div>
-      <div style="color:var(--color-muted-fg);font-size:var(--text-xs)">参数体系 · 对标框架</div>
-    </div>
-  </div>
-  <div style="display:flex;gap:var(--space-2)">
-    <button style="padding:var(--space-2) var(--space-4);background:var(--color-muted);border:1px solid var(--color-border);border-radius:var(--radius-sm);color:var(--color-muted-fg);font-size:var(--text-sm);cursor:pointer;font-family:inherit;transition:border-color var(--duration-fast) var(--ease-out)">上传文档</button>
-    <button style="padding:var(--space-2) var(--space-4);background:var(--color-accent);border:none;border-radius:var(--radius-sm);color:#fff;font-weight:600;font-size:var(--text-sm);cursor:pointer;font-family:inherit;transition:background var(--duration-fast) var(--ease-out)">管理知识库</button>
-  </div>
-</main>
-</div>
-
-<!-- Mobile Bottom Nav -->
-<nav class="mobile-nav" aria-label="主导航">
-  <button class="mobile-nav-tab active" data-tab="insight">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-    产品透视
-  </button>
-  <button class="mobile-nav-tab" data-tab="deduction">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
-    产品推演
-  </button>
-  <button class="mobile-nav-tab" data-tab="advisor">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    参谋对话
-  </button>
-  <button class="mobile-nav-tab" data-tab="knowledge">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-    知识库
-  </button>
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobileNav">
+  <button class="active" data-tab="insight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>透视</button>
+  <button data-tab="deduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>推演</button>
+  <button data-tab="advisor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>对话</button>
+  <button data-tab="knowledge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>知识库</button>
 </nav>
 
 <script>
-/* ============ TAB SWITCHING ============ */
+/* ===== TAB SWITCHING ===== */
 function switchTab(tabId) {
-  document.querySelectorAll('.tab-page').forEach(p => {
-    p.style.display = 'none';
-  });
+  document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById('tab-' + tabId);
-  if (target) {
-    target.style.display = (tabId === 'insight') ? 'contents' : 'block';
-  }
-  document.querySelectorAll('.nav-tab, .mobile-nav-tab').forEach(b => {
+  if (target) target.classList.add('active');
+  document.querySelectorAll('#sidebarNav button, #mobileNav button').forEach(b => {
     b.classList.toggle('active', b.dataset.tab === tabId);
   });
 }
-document.querySelectorAll('.nav-tab, .mobile-nav-tab').forEach(btn => {
+document.querySelectorAll('#sidebarNav button, #mobileNav button').forEach(btn => {
   btn.addEventListener('click', () => switchTab(btn.dataset.tab));
 });
 
-/* ============ SVG CAR ICONS ============ */
+/* ===== CAR DATA ===== */
 const carIcons = {
-  sports: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="24" width="48" height="22" rx="4"/><path d="M14 24V16l10-4h16l10 4v8"/><circle cx="18" cy="48" r="5"/><circle cx="46" cy="48" r="5"/><rect x="12" y="20" width="8" height="6" rx="2"/><rect x="44" y="20" width="8" height="6" rx="2"/></svg>`,
-  sedan:  `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="22" width="52" height="18" rx="3"/><path d="M14 22V14l12-4h12l12 4v8"/><circle cx="18" cy="42" r="4.5"/><circle cx="46" cy="42" r="4.5"/><rect x="10" y="18" width="10" height="6" rx="1.5"/><rect x="44" y="18" width="10" height="6" rx="1.5"/></svg>`,
-  suv:    `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="16" width="52" height="28" rx="4"/><path d="M10 16V14l12-4h20l12 4v2"/><circle cx="18" cy="46" r="5"/><circle cx="46" cy="46" r="5"/><rect x="8" y="12" width="12" height="6" rx="2"/><rect x="44" y="12" width="12" height="6" rx="2"/></svg>`
+  sports: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="24" width="48" height="22" rx="4"/><path d="M14 24V16l10-4h16l10 4v8"/><circle cx="18" cy="48" r="5"/><circle cx="46" cy="48" r="5"/><rect x="12" y="20" width="8" height="6" rx="2"/><rect x="44" y="20" width="8" height="6" rx="2"/></svg>',
+  sedan:  '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="22" width="52" height="18" rx="3"/><path d="M14 22V14l12-4h12l12 4v8"/><circle cx="18" cy="42" r="4.5"/><circle cx="46" cy="42" r="4.5"/><rect x="10" y="18" width="10" height="6" rx="1.5"/><rect x="44" y="18" width="10" height="6" rx="1.5"/></svg>',
+  suv:    '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="16" width="52" height="28" rx="4"/><path d="M10 16V14l12-4h20l12 4v2"/><circle cx="18" cy="46" r="5"/><circle cx="46" cy="46" r="5"/><rect x="8" y="12" width="12" height="6" rx="2"/><rect x="44" y="12" width="12" height="6" rx="2"/></svg>'
 };
-
 const cars = [{
-  name: "小米 SU7 Ultra",
-  badge: "new", badgeText: "今日发布",
-  icon: carIcons.sports,
-  specs: [
-    ["售价", "52.99 万起", true],
-    ["动力", "1548 匹 · 三电机"],
-    ["零百加速", "1.97 秒"],
-    ["续航 (CLTC)", "800 km"],
-    ["智驾方案", "Xiaomi Pilot Max"],
-    ["定位", "高性能轿跑"],
-  ],
-  verdict: "参数拉满，定价上探到豪华区间。<b>对赛豆的威胁：</b>同价位段形成直接竞争，小米品牌势能 + 渠道能力不容低估。建议关注其实际交付节奏和智驾体验口碑。",
-  threat: "high", threatText: "竞品威胁度：高"
-}, {
-  name: "比亚迪 汉 L",
-  badge: "hot", badgeText: "热度飙升",
-  icon: carIcons.sedan,
-  specs: [
-    ["售价", "22.98 - 32.98 万", true],
-    ["动力", "517 匹 · 双电机"],
-    ["零百加速", "3.9 秒"],
-    ["续航 (CLTC)", "705 km"],
-    ["智驾方案", "DiPilot 300"],
-    ["定位", "中大型旗舰轿车"],
-  ],
-  verdict: "价格区间覆盖主流市场，刀片电池+DM-i双路线策略稳健。<b>对赛豆的启示：</b>定价策略值得参考——用混动拉低门槛、纯电冲高端，两条腿走路抗风险能力强。",
-  threat: "mid", threatText: "竞品威胁度：中高"
-}, {
-  name: "蔚来 ET9",
-  badge: "new", badgeText: "开启预订",
-  icon: carIcons.suv,
-  specs: [
-    ["售价", "80 万起", true],
-    ["动力", "707 匹 · 双电机"],
-    ["零百加速", "3.5 秒"],
-    ["续航 (CLTC)", "750 km"],
-    ["智驾方案", "NIO Aquila 2.0"],
-    ["定位", "行政旗舰"],
-  ],
-  verdict: "定价脱离主流市场，主打换电+服务体系差异化。<b>对赛豆的影响：</b>直接竞争较小（价位不重叠），但蔚来的服务体系标准正在拉高用户预期，需关注体验侧的军备竞赛。",
-  threat: "low", threatText: "竞品威胁度：低"
+  name:"小米 SU7 Ultra", badge:"new", badgeText:"今日发布", icon:carIcons.sports,
+  specs:[["售价","52.99 万起",1],["动力","1548 匹 · 三电机"],["零百","1.97 秒"],["续航","800 km"],["智驾","Xiaomi Pilot Max"],["定位","高性能轿跑"]],
+  verdict:"参数拉满，定价上探到豪华区间。<b>对赛豆的威胁：</b>同价位段直接竞争，小米品牌势能+渠道能力不容低估。建议关注交付节奏和智驾口碑。",
+  threat:"high", threatText:"威胁度：高"
+},{
+  name:"比亚迪 汉 L", badge:"hot", badgeText:"热度飙升", icon:carIcons.sedan,
+  specs:[["售价","22.98-32.98万",1],["动力","517 匹 · 双电机"],["零百","3.9 秒"],["续航","705 km"],["智驾","DiPilot 300"],["定位","中大型旗舰轿车"]],
+  verdict:"覆盖主流市场，刀片电池+DM-i双路线稳健。<b>对赛豆的启示：</b>混动拉低门槛、纯电冲高端，两条腿走路抗风险能力强。",
+  threat:"mid", threatText:"威胁度：中高"
+},{
+  name:"蔚来 ET9", badge:"new", badgeText:"开启预订", icon:carIcons.suv,
+  specs:[["售价","80 万起",1],["动力","707 匹 · 双电机"],["零百","3.5 秒"],["续航","750 km"],["智驾","NIO Aquila 2.0"],["定位","行政旗舰"]],
+  verdict:"定价脱离主流，主打换电+服务差异化。<b>对赛豆的影响：</b>直接竞争小，但蔚来的服务体系正在拉高用户预期，关注体验侧军备竞赛。",
+  threat:"low", threatText:"威胁度：低"
 }];
 
-/* ============ RENDER ============ */
 function renderCards() {
   document.getElementById('comparisonGrid').innerHTML = cars.map(c => `
     <div class="car-card">
-      <div class="car-card-header">
-        <span class="car-name">${c.name}</span>
-        <span class="car-badge ${c.badge==='new'?'badge-new':'badge-hot'}">${c.badgeText}</span>
+      <div class="car-card-top">
+        <div class="car-badge-row">
+          <span class="car-name">${c.name}</span>
+          <span class="car-badge ${c.badge==='new'?'badge-new':'badge-hot'}">${c.badgeText}</span>
+        </div>
+        <div class="car-visual">${c.icon}</div>
+        <div class="car-specs">
+          ${c.specs.map(s => `<div class="car-spec"><span class="spec-label">${s[0]}</span><span class="spec-value${s[2]?' price':''}">${s[1]}</span></div>`).join('')}
+        </div>
       </div>
-      <div class="car-image">${c.icon}</div>
-      <div class="specs-list">
-        ${c.specs.map(s => `
-          <div class="spec-row">
-            <span class="spec-label">${s[0]}</span>
-            <span class="spec-value${s[2]?' price':''}">${s[1]}</span>
-          </div>
-        `).join('')}
-      </div>
-      <div class="ai-verdict">
-        <div class="ai-verdict-label">AI 分析</div>
+      <div class="car-verdict">
+        <div class="car-verdict-label">AI 分析</div>
         ${c.verdict}
-        <div class="threat-level threat-${c.threat}">${c.threatText}</div>
+        <div class="threat-bar threat-${c.threat}"><span class="threat-dot"></span>${c.threatText}</div>
       </div>
     </div>
   `).join('');
 }
 
-/* ============ CHAT ============ */
+/* ===== CHAT ===== */
 const replies = [
-  "从今天的竞品数据来看，<b>小米SU7 Ultra</b>的定价策略最为激进——52.99万起的定价直接打入了传统豪华品牌的腹地。如果赛豆有同价位产品在规划中，建议重点关注小米的实际交付能力和智驾体验口碑。",
-  "三款车里，<b>比亚迪汉L</b>的定价策略最值得参考。22.98万的DM-i入门款负责走量，32.98万的纯电顶配负责冲品牌——两条腿走路的策略在当下的政策环境下抗风险能力最强。",
-  "综合来看，今天的竞品发布传递了一个信号：<b>高性能三电机正在从百万级下探到50万级</b>。建议赛豆在产品定义时认真考虑这个趋势——如果两年后三电机成为50万级的标配，我们现在的产品参数是否还有竞争力？",
-  "蔚来ET9的换电服务体系值得关注，但80万+的定价让它的直接威胁较小。<b>真正需要警惕的是蔚来对用户服务预期的拉升</b>——当用户习惯了换电、上门取送车这些服务后，会对所有品牌的售后体验提出更高要求。"
+  "<b>小米SU7 Ultra</b>定价最为激进——52.99万起直接打入传统豪华腹地。如果赛豆有同价位产品，建议重点关注小米交付能力和智驾口碑。",
+  "<b>比亚迪汉L</b>定价策略最值得参考——DM-i入门款走量，纯电顶配冲品牌，两条腿走路抗风险。",
+  "今天的竞品传递了一个信号：<b>三电机正从百万级下探到50万级</b>。建议赛豆认真考虑：两年后三电机成为50万标配，我们的参数还有竞争力吗？",
+  "蔚来ET9直接威胁较小，但<b>需要警惕的是它对用户服务预期的拉升</b>——用户习惯了换电、上门取送车，会对所有品牌的售后提出更高要求。"
 ];
 let ri = 0;
-
 function sendMessage() {
   const input = document.getElementById('chatInput');
   const msg = input.value.trim();
   if (!msg) return;
   const c = document.getElementById('chatMessages');
-  const e = document.createElement('div');
-  e.textContent = msg;
-  c.appendChild(Object.assign(document.createElement('div'), {className:'chat-msg user', textContent: msg}));
+  c.innerHTML += `<div class="chat-msg user">${esc(msg)}</div>`;
   input.value = '';
   const reply = replies[ri++ % replies.length];
   setTimeout(() => {
-    const a = document.createElement('div');
-    a.className = 'chat-msg ai';
-    a.innerHTML = reply;
-    c.appendChild(a);
+    c.innerHTML += `<div class="chat-msg ai">${reply}</div>`;
     c.scrollTop = c.scrollHeight;
   }, 600);
 }
-
-document.getElementById('chatInput').addEventListener('keydown', e => { if (e.key==='Enter') sendMessage(); });
+function esc(t) { const d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
+document.getElementById('chatInput').addEventListener('keydown', e => { if(e.key==='Enter')sendMessage(); });
 
 renderCards();
 </script>
