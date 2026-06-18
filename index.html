@@ -538,10 +538,10 @@
       赛豆 · 汽车智能平台
     </div>
     <nav class="nav-tabs">
-      <button class="nav-tab active">产品透视</button>
-      <button class="nav-tab">产品推演</button>
-      <button class="nav-tab">参谋对话</button>
-      <button class="nav-tab">知识库</button>
+      <button class="nav-tab active" data-tab="insight">产品透视</button>
+      <button class="nav-tab" data-tab="deduction">产品推演</button>
+      <button class="nav-tab" data-tab="advisor">参谋对话</button>
+      <button class="nav-tab" data-tab="knowledge">知识库</button>
     </nav>
   </div>
   <div class="header-right">
@@ -550,6 +550,7 @@
 </header>
 
 <!-- Main -->
+<div id="tab-insight" class="tab-page" style="display:contents">
 <main class="main">
 
   <!-- Search -->
@@ -590,28 +591,131 @@
   </div>
 
 </main>
+</div>
+
+<!-- ============ TAB PAGES ============ -->
+
+<div id="tab-deduction" class="tab-page" hidden>
+<main class="main" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:var(--space-6);">
+  <div style="color:var(--color-muted-fg); opacity:0.6">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+  </div>
+  <div>
+    <h3 style="font-size:var(--text-xl);font-weight:600;margin-bottom:var(--space-2)">产品推演</h3>
+    <p style="color:var(--color-muted-fg);font-size:var(--text-sm);line-height:1.7;max-width:480px">
+      输入产品定义参数（定位、定价、配置），AI 基于赛豆方法论和历史数据，实时推演市场表现、竞争态势和发展建议。
+    </p>
+  </div>
+  <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;justify-content:center">
+    <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:var(--space-4) var(--space-6);text-align:left">
+      <div style="color:var(--color-muted-fg);font-size:var(--text-xs);margin-bottom:var(--space-1)">💎 定位</div>
+      <div style="font-weight:600;font-size:var(--text-base)">中大型 SUV</div>
+    </div>
+    <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:var(--space-4) var(--space-6);text-align:left">
+      <div style="color:var(--color-muted-fg);font-size:var(--text-xs);margin-bottom:var(--space-1)">💰 定价</div>
+      <div style="font-weight:600;font-size:var(--text-base);font-family:var(--font-mono);color:var(--color-success)">28.98 万起</div>
+    </div>
+    <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:var(--space-4) var(--space-6);text-align:left">
+      <div style="color:var(--color-muted-fg);font-size:var(--text-xs);margin-bottom:var(--space-1)">⚡ 动力</div>
+      <div style="font-weight:600;font-size:var(--text-base)">双电机 480 匹</div>
+    </div>
+  </div>
+  <button style="padding:var(--space-2) var(--space-6);background:var(--color-accent);border:none;border-radius:var(--radius-sm);color:#fff;font-weight:600;font-size:var(--text-sm);cursor:pointer;font-family:inherit;transition:background var(--duration-fast) var(--ease-out)">开始推演</button>
+</main>
+</div>
+
+<div id="tab-advisor" class="tab-page" hidden>
+<main class="main" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:var(--space-6);">
+  <div style="color:var(--color-muted-fg); opacity:0.6">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </div>
+  <div>
+    <h3 style="font-size:var(--text-xl);font-weight:600;margin-bottom:var(--space-2)">参谋对话</h3>
+    <p style="color:var(--color-muted-fg);font-size:var(--text-sm);line-height:1.7;max-width:480px">
+      自由对话模式。AI 以赛豆资深产品顾问身份，结合公司方法论和历史决策记录，对任何产品想法给出贴合实际的即时分析。
+    </p>
+  </div>
+  <div style="display:flex;gap:var(--space-2);width:100%;max-width:520px">
+    <input style="flex:1;padding:var(--space-2) var(--space-3);background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius-sm);color:var(--color-foreground);font-size:var(--text-sm);font-family:inherit" type="text" placeholder="输入你的产品想法…">
+    <button style="padding:var(--space-2) var(--space-5);background:var(--color-accent);border:none;border-radius:var(--radius-sm);color:#fff;font-weight:600;font-size:var(--text-sm);cursor:pointer;font-family:inherit;white-space:nowrap">开始对话</button>
+  </div>
+</main>
+</div>
+
+<div id="tab-knowledge" class="tab-page" hidden>
+<main class="main" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:var(--space-6);">
+  <div style="color:var(--color-muted-fg); opacity:0.6">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+  </div>
+  <div>
+    <h3 style="font-size:var(--text-xl);font-weight:600;margin-bottom:var(--space-2)">知识库</h3>
+    <p style="color:var(--color-muted-fg);font-size:var(--text-sm);line-height:1.7;max-width:480px">
+      管理和维护赛豆的竞品分析方法论、43项核心能力、历史分析报告及产品定义框架。这里是整个平台的灵魂——AI 分析质量的根基。
+    </p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3);max-width:400px;width:100%">
+    <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:var(--space-3);text-align:left">
+      <div style="font-size:var(--text-sm);font-weight:600;margin-bottom:2px">评估框架</div>
+      <div style="color:var(--color-muted-fg);font-size:var(--text-xs)">维度 · 权重 · 打分逻辑</div>
+    </div>
+    <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:var(--space-3);text-align:left">
+      <div style="font-size:var(--text-sm);font-weight:600;margin-bottom:2px">43项能力</div>
+      <div style="color:var(--color-muted-fg);font-size:var(--text-xs)">核心能力 · 标签结构</div>
+    </div>
+    <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:var(--space-3);text-align:left">
+      <div style="font-size:var(--text-sm);font-weight:600;margin-bottom:2px">历史报告</div>
+      <div style="color:var(--color-muted-fg);font-size:var(--text-xs)">5份 · RAG 知识库素材</div>
+    </div>
+    <div style="background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:var(--space-3);text-align:left">
+      <div style="font-size:var(--text-sm);font-weight:600;margin-bottom:2px">产品定义</div>
+      <div style="color:var(--color-muted-fg);font-size:var(--text-xs)">参数体系 · 对标框架</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:var(--space-2)">
+    <button style="padding:var(--space-2) var(--space-4);background:var(--color-muted);border:1px solid var(--color-border);border-radius:var(--radius-sm);color:var(--color-muted-fg);font-size:var(--text-sm);cursor:pointer;font-family:inherit;transition:border-color var(--duration-fast) var(--ease-out)">上传文档</button>
+    <button style="padding:var(--space-2) var(--space-4);background:var(--color-accent);border:none;border-radius:var(--radius-sm);color:#fff;font-weight:600;font-size:var(--text-sm);cursor:pointer;font-family:inherit;transition:background var(--duration-fast) var(--ease-out)">管理知识库</button>
+  </div>
+</main>
+</div>
 
 <!-- Mobile Bottom Nav -->
 <nav class="mobile-nav" aria-label="主导航">
-  <button class="mobile-nav-tab active">
+  <button class="mobile-nav-tab active" data-tab="insight">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
     产品透视
   </button>
-  <button class="mobile-nav-tab">
+  <button class="mobile-nav-tab" data-tab="deduction">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
     产品推演
   </button>
-  <button class="mobile-nav-tab">
+  <button class="mobile-nav-tab" data-tab="advisor">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
     参谋对话
   </button>
-  <button class="mobile-nav-tab">
+  <button class="mobile-nav-tab" data-tab="knowledge">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
     知识库
   </button>
 </nav>
 
 <script>
+/* ============ TAB SWITCHING ============ */
+function switchTab(tabId) {
+  document.querySelectorAll('.tab-page').forEach(p => {
+    p.hidden = true;
+  });
+  const target = document.getElementById('tab-' + tabId);
+  if (target) {
+    target.hidden = false;
+  }
+  document.querySelectorAll('.nav-tab, .mobile-nav-tab').forEach(b => {
+    b.classList.toggle('active', b.dataset.tab === tabId);
+  });
+}
+document.querySelectorAll('.nav-tab, .mobile-nav-tab').forEach(btn => {
+  btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+});
+
 /* ============ SVG CAR ICONS ============ */
 const carIcons = {
   sports: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="24" width="48" height="22" rx="4"/><path d="M14 24V16l10-4h16l10 4v8"/><circle cx="18" cy="48" r="5"/><circle cx="46" cy="48" r="5"/><rect x="12" y="20" width="8" height="6" rx="2"/><rect x="44" y="20" width="8" height="6" rx="2"/></svg>`,
