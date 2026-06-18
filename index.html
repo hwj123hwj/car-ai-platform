@@ -259,8 +259,18 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 16px;
+    overflow: hidden;
   }
   .car-visual svg { width: 56px; height: 56px; opacity: 0.35; }
+  .car-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 300ms var(--ease);
+  }
+  .car-card:hover .car-visual img {
+    transform: scale(1.05);
+  }
   .car-specs {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -656,17 +666,17 @@ const carIcons = {
   suv:    '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="16" width="52" height="28" rx="4"/><path d="M10 16V14l12-4h20l12 4v2"/><circle cx="18" cy="46" r="5"/><circle cx="46" cy="46" r="5"/><rect x="8" y="12" width="12" height="6" rx="2"/><rect x="44" y="12" width="12" height="6" rx="2"/></svg>'
 };
 const cars = [{
-  name:"小米 SU7 Ultra", badge:"new", badgeText:"今日发布", icon:carIcons.sports,
+  name:"小米 SU7 Ultra", badge:"new", badgeText:"今日发布", image:"./images/xiaomi_su7_ultra.png",
   specs:[["售价","52.99 万起",1],["动力","1548 匹 · 三电机"],["零百","1.97 秒"],["续航","800 km"],["智驾","Xiaomi Pilot Max"],["定位","高性能轿跑"]],
   verdict:"参数拉满，定价上探到豪华区间。<b>对赛豆的威胁：</b>同价位段直接竞争，小米品牌势能+渠道能力不容低估。建议关注交付节奏和智驾口碑。",
   threat:"high", threatText:"威胁度：高"
 },{
-  name:"比亚迪 汉 L", badge:"hot", badgeText:"热度飙升", icon:carIcons.sedan,
+  name:"比亚迪 汉 L", badge:"hot", badgeText:"热度飙升", image:"./images/byd_han_l.png",
   specs:[["售价","22.98-32.98万",1],["动力","517 匹 · 双电机"],["零百","3.9 秒"],["续航","705 km"],["智驾","DiPilot 300"],["定位","中大型旗舰轿车"]],
   verdict:"覆盖主流市场，刀片电池+DM-i双路线稳健。<b>对赛豆的启示：</b>混动拉低门槛、纯电冲高端，两条腿走路抗风险能力强。",
   threat:"mid", threatText:"威胁度：中高"
 },{
-  name:"蔚来 ET9", badge:"new", badgeText:"开启预订", icon:carIcons.suv,
+  name:"蔚来 ET9", badge:"new", badgeText:"开启预订", image:"./images/nio_et9.png",
   specs:[["售价","80 万起",1],["动力","707 匹 · 双电机"],["零百","3.5 秒"],["续航","750 km"],["智驾","NIO Aquila 2.0"],["定位","行政旗舰"]],
   verdict:"定价脱离主流，主打换电+服务差异化。<b>对赛豆的影响：</b>直接竞争小，但蔚来的服务体系正在拉高用户预期，关注体验侧军备竞赛。",
   threat:"low", threatText:"威胁度：低"
@@ -680,7 +690,9 @@ function renderCards() {
           <span class="car-name">${c.name}</span>
           <span class="car-badge ${c.badge==='new'?'badge-new':'badge-hot'}">${c.badgeText}</span>
         </div>
-        <div class="car-visual">${c.icon}</div>
+        <div class="car-visual">
+          <img src="${c.image}" alt="${c.name}">
+        </div>
         <div class="car-specs">
           ${c.specs.map(s => `<div class="car-spec"><span class="spec-label">${s[0]}</span><span class="spec-value${s[2]?' price':''}">${s[1]}</span></div>`).join('')}
         </div>
