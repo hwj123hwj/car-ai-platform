@@ -457,6 +457,340 @@
     .mobile-nav button.active { color: var(--c-accent); }
   }
 
+  /* ===== INTERACTIVE UI PRO MAX STYLES ===== */
+  /* Deduction Panel Layout */
+  .deduction-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .config-section {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .config-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .config-group-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--c-dim);
+    letter-spacing: 0.05em;
+  }
+  .config-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 6px;
+  }
+  .config-btn {
+    padding: 8px 10px;
+    background: var(--c-surface2);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-sm);
+    color: var(--c-dim);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: all 150ms var(--ease);
+  }
+  .config-btn:hover {
+    color: var(--c-text);
+    border-color: var(--c-border-strong);
+  }
+  .config-btn.active {
+    color: var(--c-accent);
+    background: rgba(37,99,235,0.1);
+    border-color: var(--c-accent);
+  }
+
+  .deduction-result-card {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    min-height: 400px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .deduction-empty-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--c-dim);
+    gap: 16px;
+  }
+  .deduction-empty-state svg {
+    width: 48px; height: 48px; opacity: 0.3;
+  }
+
+  /* Loading Animation */
+  .deduction-loading {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+    justify-content: center;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .loading-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--c-dim);
+  }
+  .loading-step-spinner {
+    width: 16px; height: 16px;
+    border: 2px solid transparent;
+    border-top-color: var(--c-accent);
+    border-radius: 50%;
+    animation: spin 800ms linear infinite;
+  }
+  .loading-step-done {
+    color: var(--c-success);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .loading-step-done svg { width: 16px; height: 16px; }
+  .loading-progress-bar-container {
+    width: 100%;
+    height: 4px;
+    background: var(--c-surface2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .loading-progress-bar {
+    width: 0%;
+    height: 100%;
+    background: var(--c-accent);
+    transition: width 200ms linear;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Deduction Output */
+  .deduction-report {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: fadeIn 300ms var(--ease);
+  }
+  .report-header {
+    border-bottom: 1px solid var(--c-border);
+    padding-bottom: 12px;
+    margin-bottom: 4px;
+  }
+  .report-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--c-text);
+  }
+  .report-meta {
+    font-size: 11px;
+    color: var(--c-dim);
+    margin-top: 2px;
+  }
+  .report-section {
+    background: var(--c-surface2);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .report-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--c-accent);
+    margin-bottom: 8px;
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Question Bubbles */
+  .advisor-chat-wrapper {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 16px;
+    height: 100%;
+    min-height: 480px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .advisor-messages {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 380px;
+    padding-right: 4px;
+  }
+  .advisor-bubble-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .advisor-bubble-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--c-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .advisor-bubble-btn {
+    background: var(--c-surface2);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    color: var(--c-text);
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: all 150ms var(--ease);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  .advisor-bubble-btn svg {
+    width: 16px; height: 16px; color: var(--c-accent); flex-shrink: 0;
+  }
+  .advisor-bubble-btn:hover {
+    border-color: var(--c-accent);
+    background: rgba(37,99,235,0.04);
+  }
+
+  /* Upload Modal popup style */
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,14,20,0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms var(--ease);
+  }
+  .modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modal-content {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border-strong);
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 440px;
+    padding: 24px;
+    box-shadow: var(--shadow-lg);
+    transform: scale(0.95);
+    transition: transform 200ms var(--ease);
+  }
+  .modal-overlay.active .modal-content {
+    transform: scale(1);
+  }
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .modal-title { font-size: 16px; font-weight: 700; }
+  .modal-close {
+    background: transparent; border: none; color: var(--c-dim); cursor: pointer; padding: 4px;
+  }
+  .modal-close:hover { color: var(--c-text); }
+  .upload-dropzone {
+    border: 2px dashed var(--c-border-strong);
+    border-radius: var(--radius);
+    padding: 32px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 150ms var(--ease);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    background: var(--c-surface2);
+  }
+  .upload-dropzone:hover, .upload-dropzone.dragover {
+    border-color: var(--c-accent);
+    background: rgba(37,99,235,0.02);
+  }
+  .upload-dropzone svg { width: 40px; height: 40px; color: var(--c-dim); transition: color 150ms var(--ease); }
+  .upload-dropzone:hover svg { color: var(--c-accent); }
+
+  /* Typing Indicator Bubble */
+  .typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 14px;
+  }
+  .typing-dot {
+    width: 6px; height: 6px;
+    background: var(--c-dim);
+    border-radius: 50%;
+    animation: typingPulse 1s infinite alternate;
+  }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typingPulse { from { opacity: 0.3; transform: scale(0.8); } to { opacity: 1; transform: scale(1.2); } }
+
+  /* Toast Notification */
+  .toast {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-success);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 300ms var(--ease);
+    z-index: 2000;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .toast.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .toast-success-icon { color: var(--c-success); width: 16px; height: 16px; display: flex; align-items: center; }
+
+  @media (max-width: 768px) {
+    .deduction-layout {
+      grid-template-columns: 1fr;
+    }
+    .modal-content { width: 95%; padding: 20px; }
+  }
+
   @media (max-width: 640px) {
     .topbar { flex-direction: column; gap: 8px; }
     .topbar-search { max-width: none; }
@@ -563,20 +897,66 @@
     <div id="tab-deduction" class="tab-page">
       <div class="page-header">
         <div>
-          <div class="page-title">产品推演</div>
-          <div class="page-subtitle">输入参数，AI 基于赛豆方法论推演市场表现与竞争态势</div>
+          <div class="page-title">智能产品推演</div>
+          <div class="page-subtitle">配置您的新产品概念，由 AI 仿真模型预测市场竞争力及战略冲突</div>
         </div>
       </div>
-      <div class="placeholder-page">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
-        <h3>产品推演</h3>
-        <p>输入产品定位、定价、配置参数，AI 基于赛豆43项核心能力体系实时推演市场表现和竞争建议。</p>
-        <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;justify-content:center">
-          <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-sm);padding:14px 18px;text-align:left"><div style="font-size:11px;color:var(--c-dim)">定位</div><div style="font-weight:600;font-size:15px">中大型 SUV</div></div>
-          <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-sm);padding:14px 18px;text-align:left"><div style="font-size:11px;color:var(--c-dim)">定价</div><div style="font-weight:600;font-size:15px;font-family:var(--font-mono);color:var(--c-success)">28.98 万起</div></div>
-          <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-sm);padding:14px 18px;text-align:left"><div style="font-size:11px;color:var(--c-dim)">动力</div><div style="font-weight:600;font-size:15px">双电机 480 匹</div></div>
+
+      <div class="deduction-layout">
+        <!-- Configuration Side Panel -->
+        <div class="config-section">
+          <div class="config-group">
+            <span class="config-group-label">车型定位</span>
+            <div class="config-options" id="opt-type">
+              <div class="config-btn active" onclick="selectConfig('type', 'suv', this)">SUV</div>
+              <div class="config-btn" onclick="selectConfig('type', 'sedan', this)">轿跑</div>
+              <div class="config-btn" onclick="selectConfig('type', 'mpv', this)">MPV</div>
+            </div>
+          </div>
+
+          <div class="config-group">
+            <span class="config-group-label">目标定价区间</span>
+            <div class="config-options" id="opt-price">
+              <div class="config-btn active" onclick="selectConfig('price', 'mid', this)">20-30万</div>
+              <div class="config-btn" onclick="selectConfig('price', 'high', this)">30-50万</div>
+              <div class="config-btn" onclick="selectConfig('price', 'ultra', this)">50万以上</div>
+            </div>
+          </div>
+
+          <div class="config-group">
+            <span class="config-group-label">动力/智驾配置</span>
+            <div class="config-options" id="opt-power">
+              <div class="config-btn active" onclick="selectConfig('power', 'dual', this)">双电机+高阶</div>
+              <div class="config-btn" onclick="selectConfig('power', 'single', this)">单电机+基础</div>
+              <div class="config-btn" onclick="selectConfig('power', 'hybrid', this)">插混+高阶</div>
+            </div>
+          </div>
+
+          <div class="config-group">
+            <span class="config-group-label">核心第一卖点</span>
+            <div class="config-options" id="opt-feature" style="grid-template-columns:1fr">
+              <div class="config-btn active" onclick="selectConfig('feature', 'comfort', this)" style="text-align:left">🛋️ 豪华舒适空间</div>
+              <div class="config-btn" onclick="selectConfig('feature', 'performance', this)" style="text-align:left">🏁 极限制动与操控</div>
+              <div class="config-btn" onclick="selectConfig('feature', 'tech', this)" style="text-align:left">🤖 智能座舱三联屏</div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" onclick="runDeduction()" style="width:100%; justify-content:center; padding:12px 16px; margin-top:8px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:2px"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            开始模拟市场推演
+          </button>
         </div>
-        <button class="btn btn-primary" style="margin-top:4px">开始推演</button>
+
+        <!-- Results Dashboard Panel -->
+        <div class="deduction-result-card" id="deductionResultArea">
+          <div class="deduction-empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+            <div>
+              <h4 style="font-size:15px; font-weight:600; color:var(--c-text); margin-bottom:4px">等待配置输入</h4>
+              <p style="font-size:13px; color:var(--c-dim)">请在左侧选择产品属性，然后点击“开始模拟市场推演”按钮</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -584,17 +964,36 @@
     <div id="tab-advisor" class="tab-page">
       <div class="page-header">
         <div>
-          <div class="page-title">参谋对话</div>
-          <div class="page-subtitle">AI 资深产品顾问，贴合赛豆方法论，持续对话，输出有记忆</div>
+          <div class="page-title">资深参谋对话</div>
+          <div class="page-subtitle">直接对话赛豆 AI 智囊团，基于企业内部沉淀方法论，提供连贯性产品咨询</div>
         </div>
       </div>
-      <div class="placeholder-page">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <h3>参谋对话</h3>
-        <p>自由对话模式。AI 以赛豆资深产品顾问身份，结合43项核心能力体系、历史决策和你的偏好，对任何产品想法给出贴合实际的深入分析。</p>
-        <div style="display:flex;gap:8px;width:100%;max-width:520px;margin-top:4px">
-          <input style="flex:1;padding:10px 14px;background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-sm);color:var(--c-text);font-size:14px;font-family:inherit" type="text" placeholder="说说你的产品想法…">
-          <button class="btn btn-primary">开始对话</button>
+
+      <div class="advisor-chat-wrapper">
+        <div class="advisor-messages" id="advisorMessages">
+          <div class="chat-msg ai">
+            您好，王总。我是您的赛豆产品参谋。我已经集成了赛豆43项核心能力矩阵以及近期行业调研。您可以随意考验我，或选择以下高频决策痛点，我们即刻展开推演：
+          </div>
+          <div class="advisor-bubble-grid" id="advisorBubbles">
+            <span class="advisor-bubble-title">💡 战略痛点速查</span>
+            <button class="advisor-bubble-btn" onclick="askAdvisorQuestion(1)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:16px; height:16px; color:var(--c-accent); flex-shrink:0"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              我们下一款中大型 SUV 如果定价 28.98 万，能避开小米的直接竞争吗？
+            </button>
+            <button class="advisor-bubble-btn" onclick="askAdvisorQuestion(2)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:16px; height:16px; color:var(--c-accent); flex-shrink:0"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              如果把智驾方案作为主卖点，目前赛豆的核心壁垒够深吗？
+            </button>
+            <button class="advisor-bubble-btn" onclick="askAdvisorQuestion(3)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width:16px; height:16px; color:var(--c-accent); flex-shrink:0"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              如何看待比亚迪汉 L 的混动与纯电双路线，对我们的中端产品防线有什么蚕食效应？
+            </button>
+          </div>
+        </div>
+
+        <div class="chat-footer" style="padding:10px 0 0; border-top:1px solid var(--c-border)">
+          <input id="advisorInput" type="text" placeholder="向智能产品参谋发问…" aria-label="消息" style="height:40px">
+          <button onclick="sendAdvisorCustomMessage()" style="height:40px; padding:0 24px">开始对话</button>
         </div>
       </div>
     </div>
@@ -603,33 +1002,48 @@
     <div id="tab-knowledge" class="tab-page">
       <div class="page-header">
         <div>
-          <div class="page-title">知识库</div>
-          <div class="page-subtitle">管理赛豆的分析方法论、核心能力和历史数据——AI 分析质量的根基</div>
+          <div class="page-title">赛豆企业知识库</div>
+          <div class="page-subtitle">管理、维护及拓展平台专有的智力资产——AI 深度精准决策的基石</div>
         </div>
         <div class="page-actions">
-          <button class="btn btn-primary">上传文档</button>
+          <button class="btn btn-primary" onclick="openUploadModal()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+            上传专属文档
+          </button>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px">
-        <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius);padding:20px">
-          <div style="font-size:15px;font-weight:600;margin-bottom:6px">评估框架</div>
-          <div style="color:var(--c-dim);font-size:13px">竞品维度 · 打分逻辑 · 权重配置</div>
-          <div style="margin-top:12px;font-size:12px;color:var(--c-accent)">12 个维度</div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:16px">
+        <div style="background:var(--c-surface); border:1px solid var(--c-border); border-radius:var(--radius); padding:24px; position:relative; overflow:hidden">
+          <div style="font-size:16px; font-weight:700; margin-bottom:6px">评估框架</div>
+          <div style="color:var(--c-dim); font-size:13px; line-height:1.5">竞品判定维度 · 分数标定权重 · 系统评价系数</div>
+          <div style="margin-top:16px; font-size:12px; color:var(--c-accent); font-weight:600; display:flex; align-items:center; gap:6px">
+            <span style="width:6px; height:6px; background:var(--c-accent); border-radius:50%"></span> 12 个核心评估维度
+          </div>
         </div>
-        <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius);padding:20px">
-          <div style="font-size:15px;font-weight:600;margin-bottom:6px">43项核心能力</div>
-          <div style="color:var(--c-dim);font-size:13px">结构化标签 · 场景匹配</div>
-          <div style="margin-top:12px;font-size:12px;color:var(--c-warning)">待文档化</div>
+
+        <div style="background:var(--c-surface); border:1px solid var(--c-border); border-radius:var(--radius); padding:24px; position:relative; overflow:hidden">
+          <div style="font-size:16px; font-weight:700; margin-bottom:6px">43项核心能力</div>
+          <div style="color:var(--c-dim); font-size:13px; line-height:1.5">核心技术壁垒 · 供应链优势 · 渠道匹配规则</div>
+          <div style="margin-top:16px; font-size:12px; color:var(--c-warning); font-weight:600; display:flex; align-items:center; gap:6px">
+            <span style="width:6px; height:6px; background:var(--c-warning); border-radius:50%"></span> 处于人脑沉淀，待文档化
+          </div>
         </div>
-        <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius);padding:20px">
-          <div style="font-size:15px;font-weight:600;margin-bottom:6px">历史分析报告</div>
-          <div style="color:var(--c-dim);font-size:13px">RAG 知识库素材 · 逆向提炼方法论</div>
-          <div style="margin-top:12px;font-size:12px;color:var(--c-success)">5 份可用</div>
+
+        <div style="background:var(--c-surface); border:1px solid var(--c-border); border-radius:var(--radius); padding:24px; position:relative; overflow:hidden">
+          <div style="font-size:16px; font-weight:700; margin-bottom:6px">历史分析报告</div>
+          <div style="color:var(--c-dim); font-size:13px; line-height:1.5">历史汇报 PPT · 方法论沉淀 · 已脱敏文档案例</div>
+          <div style="margin-top:16px; font-size:12px; color:var(--c-success); font-weight:600; display:flex; align-items:center; gap:6px" id="lbl-report-count">
+            <span style="width:6px; height:6px; background:var(--c-success); border-radius:50%"></span> 5 份企业机密报告可用
+          </div>
         </div>
-        <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius);padding:20px">
-          <div style="font-size:15px;font-weight:600;margin-bottom:6px">产品定义体系</div>
-          <div style="color:var(--c-dim);font-size:13px">定位 · 对标框架 · 参数模板</div>
-          <div style="margin-top:12px;font-size:12px;color:var(--c-warning)">待文档化</div>
+
+        <div style="background:var(--c-surface); border:1px solid var(--c-border); border-radius:var(--radius); padding:24px; position:relative; overflow:hidden">
+          <div style="font-size:16px; font-weight:700; margin-bottom:6px">产品定义参数框架</div>
+          <div style="color:var(--c-dim); font-size:13px; line-height:1.5">目标人群特征 · 配置锚点 · 用户预期满意曲线</div>
+          <div style="margin-top:16px; font-size:12px; color:var(--c-warning); font-weight:600; display:flex; align-items:center; gap:6px">
+            <span style="width:6px; height:6px; background:var(--c-warning); border-radius:50%"></span> 处于人脑沉淀，待文档化
+          </div>
         </div>
       </div>
     </div>
@@ -645,6 +1059,42 @@
   <button data-tab="knowledge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>知识库</button>
 </nav>
 
+<!-- ===== MODAL OVERLAY (UPLOAD) ===== -->
+<div class="modal-overlay" id="uploadModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-title">导入企业专属报告/文档</span>
+      <button class="modal-close" onclick="closeUploadModal()">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="upload-dropzone" id="dropzone" onclick="triggerFileSelect()">
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.5 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"/></svg>
+      <div>
+        <p style="font-size:13px; font-weight:600; color:var(--c-text); margin-bottom:2px">点击选择或拖拽文件到此处</p>
+        <p style="font-size:11px; color:var(--c-dim)">支持 PDF, DOCX, Markdown, PPTX (最大 50MB)</p>
+      </div>
+    </div>
+    <div id="uploadProgressArea" style="margin-top: 16px; display: none">
+      <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--c-dim); margin-bottom:6px">
+        <span id="uploadStatusText">正在读取本地文件...</span>
+        <span id="uploadPercentageText">0%</span>
+      </div>
+      <div class="loading-progress-bar-container">
+        <div class="loading-progress-bar" id="uploadProgressBar"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TOAST NOTIFICATION ===== -->
+<div class="toast" id="successToast">
+  <span class="toast-success-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+  </span>
+  <span id="toastMessage">操作成功</span>
+</div>
+
 <script>
 /* ===== TAB SWITCHING ===== */
 function switchTab(tabId) {
@@ -658,6 +1108,278 @@ function switchTab(tabId) {
 document.querySelectorAll('#sidebarNav button, #mobileNav button').forEach(btn => {
   btn.addEventListener('click', () => switchTab(btn.dataset.tab));
 });
+
+/* ===== PRODUCT DEDUCTION LOGIC ===== */
+const currentDeductionConfig = {
+  type: 'suv',
+  price: 'mid',
+  power: 'dual',
+  feature: 'comfort'
+};
+
+const deductionReports = {
+  'suv-mid-dual-comfort': {
+    title: '赛豆中大型舒适双电机SUV推演报告',
+    position: '20-30万中大型纯电SUV。以<b>“豪华舒适空间”</b>为主打卖点，搭配双电机高阶智驾。',
+    swot: '<b>优势 (S)</b>: 相比同级配置性价比极高，舒适性定义直击家庭用户痛点。<br><b>劣势 (W)</b>: 20-30万区间竞品极度内卷，双电机+高阶智驾方案拉高了电池及传感器BOM成本，净毛利空间狭窄。<br><b>机会 (O)</b>: 理想L6等竞品目前在纯电段防御薄弱，存在纯电家庭SUV的生态空白。<br><b>威胁 (T)</b>: 蔚来乐道L60、极氪7X拥有极强的渠道势能与供应链成本控制力。',
+    strategy: '1. <b>成本优化</b>：建议将双电机方案作为选配，主推单电机高阶智驾版本，将起售价压至22.98万以避开乐道高配锋芒。<br>2. <b>体验破局</b>：将43项核心能力中的“空气悬架+CDC“降维下放到25万级，建立绝对的底盘舒适壁垒。'
+  },
+  'suv-high-dual-comfort': {
+    title: '赛豆高端旗舰双电机舒适SUV推演报告',
+    position: '30-50万高端豪华纯电SUV。主打<b>“豪华舒适空间”</b>，对标理想L8、问界M9。',
+    swot: '<b>优势 (S)</b>: 赛豆在高端底盘及舒适座舱上的技术积累能够充分溢价，毛利丰厚。<br><b>劣势 (W)</b>: 该区间用户对“品牌忠诚度”与“智驾安全认知”极强，赛豆新品牌势能面临极大考验。<br><b>机会 (O)</b>: 问界M9虽强，但交付周期长，且底盘操控仍有优化空间。<br><b>威胁 (T)</b>: 理想L9/L8护城河极深，纯电策略不易转化增程用户。',
+    strategy: '1. <b>差异化竞争</b>：主打“后排零重力航空座椅+AI智能零感底盘”，不拼参数拼核心舒适体验。<br>2. <b>精准切入</b>：以32.98万作为锚点起售价，主攻一二线城市追求底盘质感的高净值中产家庭。'
+  }
+};
+
+const defaultDeductionReport = {
+  title: '赛豆智能多维产品推演分析',
+  position: '所选配置在当前细分市场的竞争烈度处于中高水平，产品同质化较强。',
+  swot: '<b>优势</b>: 赛豆43项核心底盘技术赋予了车辆极佳的动态质感。<br><b>劣势</b>: 营销势能与渠道铺设尚不完善，前期获客成本（CAC）偏高。',
+  strategy: '建议收窄配置宽度，聚焦单电机长续航版本。主打“高性价比智驾舒适”，在二线城市采取差异化突破，避开头部新势力在一线城市的重兵把守。'
+};
+
+function selectConfig(group, value, element) {
+  currentDeductionConfig[group] = value;
+  // Clear siblings active
+  element.parentNode.querySelectorAll('.config-btn').forEach(btn => btn.classList.remove('active'));
+  element.classList.add('active');
+}
+
+function runDeduction() {
+  const resultArea = document.getElementById('deductionResultArea');
+
+  // Show Loading Progress
+  resultArea.innerHTML = `
+    <div class="deduction-loading">
+      <div class="loading-progress-bar-container">
+        <div class="loading-progress-bar" id="deductionProgressBar"></div>
+      </div>
+      <div class="loading-step" id="step-1">
+        <div class="loading-step-spinner"></div>
+        <span>正在读取 懂车帝 数据及 赛豆内部数据库...</span>
+      </div>
+      <div class="loading-step" id="step-2" style="opacity: 0.5">
+        <div class="loading-step-spinner" style="display:none"></div>
+        <span>正在运行 赛豆43项核心能力 匹配算法...</span>
+      </div>
+      <div class="loading-step" id="step-3" style="opacity: 0.5">
+        <div class="loading-step-spinner" style="display:none"></div>
+        <span>正在生成 核心壁垒推演图表与决策矩阵...</span>
+      </div>
+    </div>
+  `;
+
+  const bar = document.getElementById('deductionProgressBar');
+  const step1 = document.getElementById('step-1');
+  const step2 = document.getElementById('step-2');
+  const step3 = document.getElementById('step-3');
+
+  // Progress flow simulation
+  setTimeout(() => {
+    bar.style.width = '35%';
+    step1.querySelector('.loading-step-spinner').remove();
+    step1.insertAdjacentHTML('afterbegin', '<span class="loading-step-done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></span>');
+    step2.style.opacity = '1';
+    step2.querySelector('.loading-step-spinner').style.display = 'block';
+  }, 1000);
+
+  setTimeout(() => {
+    bar.style.width = '70%';
+    step2.querySelector('.loading-step-spinner').remove();
+    step2.insertAdjacentHTML('afterbegin', '<span class="loading-step-done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></span>');
+    step3.style.opacity = '1';
+    step3.querySelector('.loading-step-spinner').style.display = 'block';
+  }, 2200);
+
+  setTimeout(() => {
+    bar.style.width = '100%';
+    step3.querySelector('.loading-step-spinner').remove();
+    step3.insertAdjacentHTML('afterbegin', '<span class="loading-step-done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></span>');
+  }, 3200);
+
+  setTimeout(() => {
+    // Render report
+    const key = `${currentDeductionConfig.type}-${currentDeductionConfig.price}-${currentDeductionConfig.power}-${currentDeductionConfig.feature}`;
+    const report = deductionReports[key] || defaultDeductionReport;
+
+    resultArea.innerHTML = `
+      <div class="deduction-report">
+        <div class="report-header">
+          <div class="report-title">📈 ${report.title}</div>
+          <div class="report-meta">仿真算法模型: Saidoo-Deduce V2.1 | 推演基准日: 2026-06-18</div>
+        </div>
+
+        <div class="report-section">
+          <div class="report-section-title">🧭 产品市场定位与对标</div>
+          ${report.position}
+        </div>
+
+        <div class="report-section">
+          <div class="report-section-title">📊 核心竞争力 SWOT 分析</div>
+          ${report.swot}
+        </div>
+
+        <div class="report-section" style="border-left: 3px solid var(--c-success)">
+          <div class="report-section-title" style="color:var(--c-success)">💡 赛豆驻场专家组建议方案</div>
+          ${report.strategy}
+        </div>
+      </div>
+    `;
+    showToast("推演计算完成！报告已生成");
+  }, 3800);
+}
+
+/* ===== ADVISOR CHAT LOGIC ===== */
+const advisorReplies = {
+  1: "<b>针对 28.98 万中大型 SUV 避开小米竞争的分析：</b><br><br>" +
+     "1. <b>核心价格带避让</b>：小米 SU7 Ultra 定价在 52.99 万起。目前传闻中的小米后续中大型 SUV（代号 MX11）预计起售价将在 25-32 万区间。这意味着 28.98 万的定价正处于小米未来核心防守辐射带，<b>无法实现绝对避让</b>。<br><br>" +
+     "2. <b>差异化防守（赛豆壁垒）</b>：小米的主打标签永远是“极致操控与生态”，而赛豆的核心壁垒在于底盘舒适度（CDC+气悬）与静谧性。若想避免正面硬刚，建议在产品推演上强化<b>“超级奶爸舒适座舱”</b>，将舒适参数推向极致，以此与小米的运动标签形成绝对区隔。<br><br>" +
+     "3. <b>价格带建议</b>：建议将起售价压至 <b>26.98 万</b>（主打单电机长续航智驾版），在 30 万以下建立极高性价比防御，把 28.98 万作为双电机高配性能版的卖点，错位打击竞争对手。",
+  2: "<b>赛豆目前以「高阶智驾方案」作为主卖点的可行性评估：</b><br><br>" +
+     "1. <b>壁垒深度诊断</b>：目前在消费者心智中，高阶智驾的核心高地已被华为（乾崑 ADS）和小米极度占领。赛豆作为新势力，在算法迭代数据量（车端规模）上处于劣势，单拼智驾壁垒<b>不够深，且风险极高</b>。<br><br>" +
+     "2. <b>43项核心能力重组建议</b>：赛豆应当打<b>“智能底盘 + 高阶智驾”</b>的联合拳。纯智驾无法破局，但“智驾感知融合智能底盘”（通过雷达扫描前方路面，毫秒级主动调节底盘阻尼）是赛豆的独门秘籍。建议将其包装为 <b>“魔毯智能领航系统”</b>，把操控和舒适优势放到智驾前排，形成独特的卖点体验。<br><br>" +
+     "3. <b>一期落地重点</b>：630 前应首先在知识库中固定此项“感知-底盘联动”算法文档，让 AI 在演示推演时将该体系作为一等公民进行评估输出。",
+  3: "<b>针对比亚迪汉 L 混动+纯电双路线的防御战略：</b><br><br>" +
+     "1. <b>蚕食效应评估</b>：汉 L 的混动（DM-i）下探到 22 万，纯电冲向 32 万，对赛豆中端防线形成了<b>“上下夹击”</b>。混动版依靠无里程焦虑与超低油耗抢夺赛豆的传统燃油置换用户，纯电版则用极低电池采购成本优势进行价格战。<br><br>" +
+     "2. <b>破局防御矩阵</b>：<br>" +
+     "• <b>对阵混动（下沉市场）</b>：我们必须承认纯电在补能便利性上的劣势。汉 L DM-i 负责量，我们则应针对其短板，强调纯电车型的“极佳静谧性、动力响应平顺、以及更强的车机算力”。<br>" +
+     "• <b>对阵纯电（高端对决）</b>：汉 L 的智驾在 30 万以内竞争力偏弱。赛豆应在 25-28 万区间<b>标配高阶智驾</b>，在科技心智上降维打击汉 L，实现中高端用户拦截。<br><br>" +
+     "3. <b>战略行动建议</b>：在一期竞品透视模块，将汉 L 的“双动力路线”标记为高威胁事件，自动激活“智驾壁垒反击预案”输出给管理层。"
+};
+
+function askAdvisorQuestion(qId) {
+  const bubbles = document.getElementById('advisorBubbles');
+  const container = document.getElementById('advisorMessages');
+
+  let qText = "";
+  if (qId === 1) qText = "我们下一款中大型 SUV 如果定价 28.98 万，能避开小米的直接竞争吗？";
+  else if (qId === 2) qText = "如果把智驾方案作为主卖点，目前赛豆的核心壁垒够深吗？";
+  else if (qId === 3) qText = "如何看待比亚迪汉 L 的混动与纯电双路线，对我们的中端产品防线有什么蚕食效应？";
+
+  // Hide the bubbles
+  bubbles.style.display = 'none';
+
+  // Append user message
+  container.innerHTML += `<div class="chat-msg user">${qText}</div>`;
+  container.scrollTop = container.scrollHeight;
+
+  // Append typing indicator
+  container.innerHTML += `
+    <div class="chat-msg ai" id="advisorTyping" style="padding:0">
+      <div class="typing-indicator">
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      </div>
+    </div>
+  `;
+  container.scrollTop = container.scrollHeight;
+
+  // Simulate thinking and answer
+  setTimeout(() => {
+    document.getElementById('advisorTyping').remove();
+    container.innerHTML += `<div class="chat-msg ai">${advisorReplies[qId]}</div>`;
+    container.scrollTop = container.scrollHeight;
+    showToast("参谋分析完成！");
+  }, 1800);
+}
+
+function sendAdvisorCustomMessage() {
+  const input = document.getElementById('advisorInput');
+  const msg = input.value.trim();
+  if (!msg) return;
+
+  const container = document.getElementById('advisorMessages');
+  container.innerHTML += `<div class="chat-msg user">${esc(msg)}</div>`;
+  input.value = '';
+  container.scrollTop = container.scrollHeight;
+
+  container.innerHTML += `
+    <div class="chat-msg ai" id="advisorTyping" style="padding:0">
+      <div class="typing-indicator">
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      </div>
+    </div>
+  `;
+  container.scrollTop = container.scrollHeight;
+
+  setTimeout(() => {
+    document.getElementById('advisorTyping').remove();
+    const genericAnswers = [
+      "关于这个问题，我们需要回到<b>赛豆43项核心底盘控制技术</b>来进行交叉比对。建议在「产品推演」中设置具体配置，我们可以进行全面的仿真推测。",
+      "收到您的咨询。根据历史数据库A的定价数据，同类别产品在该定价区间的市场转化率为14.2%，面临的主要阻力来自于经销商铺设。我们需要在后台知识库中添加最新的渠道策略文档，以便给出更精确的推演。"
+    ];
+    const randAns = genericAnswers[Math.floor(Math.random() * genericAnswers.length)];
+    container.innerHTML += `<div class="chat-msg ai">${randAns}</div>`;
+    container.scrollTop = container.scrollHeight;
+  }, 1500);
+}
+
+/* ===== KNOWLEDGE BASE & UPLOAD LOGIC ===== */
+function openUploadModal() {
+  document.getElementById('uploadModal').classList.add('active');
+}
+
+function closeUploadModal() {
+  document.getElementById('uploadModal').classList.remove('active');
+  // Reset modal state
+  document.getElementById('uploadProgressArea').style.display = 'none';
+  document.getElementById('uploadProgressBar').style.width = '0%';
+  document.getElementById('dropzone').style.display = 'flex';
+}
+
+function triggerFileSelect() {
+  // Simulate mock file uploading
+  const progressArea = document.getElementById('uploadProgressArea');
+  const dropzone = document.getElementById('dropzone');
+  const bar = document.getElementById('uploadProgressBar');
+  const percentText = document.getElementById('uploadPercentageText');
+  const statusText = document.getElementById('uploadStatusText');
+
+  dropzone.style.display = 'none';
+  progressArea.style.display = 'block';
+
+  let p = 0;
+  statusText.textContent = "正在读取本地企业机密 PDF 文件...";
+
+  const timer = setInterval(() => {
+    p += Math.floor(Math.random() * 15) + 5;
+    if (p > 100) p = 100;
+    bar.style.width = p + '%';
+    percentText.textContent = p + '%';
+
+    if (p >= 25 && p < 60) {
+      statusText.textContent = "正在对报告进行高精解析并匹配 43项能力 标签...";
+    } else if (p >= 60 && p < 95) {
+      statusText.textContent = "正在写入专属向量数据库并生成 RAG 语义索引...";
+    } else if (p >= 100) {
+      clearInterval(timer);
+      statusText.textContent = "写入完成！专属知识库已刷新。";
+      setTimeout(() => {
+        closeUploadModal();
+        // Dynamically increment reports count to show premium live state!
+        document.getElementById('lbl-report-count').innerHTML = `
+          <span style="width:6px; height:6px; background:var(--c-success); border-radius:50%"></span>
+          <strong style="color:var(--c-success)">6 份企业机密报告可用</strong> (刚刚更新)
+        `;
+        showToast("🎉 企业知识库增量上传解析成功！已更新至 RAG 语义索引");
+      }, 800);
+    }
+  }, 200);
+}
+
+/* ===== TOAST NOTIFICATION ===== */
+function showToast(msg) {
+  const toast = document.getElementById('successToast');
+  document.getElementById('toastMessage').textContent = msg;
+  toast.classList.add('active');
+  setTimeout(() => {
+    toast.classList.remove('active');
+  }, 3000);
+}
 
 /* ===== CAR DATA ===== */
 const carIcons = {
